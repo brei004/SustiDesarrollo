@@ -1,51 +1,52 @@
 # SustiDesarrollo
+Parte 1
+
+Previamente ejecutando todos los comandos para inizializar el proyecto se verifica cucumber es así que nuestro proyecto queda así
+
+![imagen](https://github.com/brei004/SustiDesarrollo/assets/153737279/ddd97dc4-e0bf-4af3-997b-fdfbec3a7162)
+
+Con los escenarios fallidos
+
+![imagen](https://github.com/brei004/SustiDesarrollo/assets/153737279/491150b3-6675-413d-bbfa-1864efe93bf3)
+
+Cobertura de codigo 
+El index.html nos muestra un informde nuestras pruebas en general
+![imagen](https://github.com/brei004/SustiDesarrollo/assets/153737279/3b5697d2-3964-4860-a5fa-cc4229fc9663)
+
+Pregunta 1
+-migracion 
+![imagen](https://github.com/brei004/SustiDesarrollo/assets/153737279/19f8d808-1e7f-41e7-bdf9-90e492271d79)
+
+Se modifican las vistas
+![imagen](https://github.com/brei004/SustiDesarrollo/assets/153737279/e8b08fed-bc87-4624-8afc-e501a6660a9b)
+
+![imagen](https://github.com/brei004/SustiDesarrollo/assets/153737279/76a96b46-daa4-4422-932b-a30a3a0a16f4)
+
+![imagen](https://github.com/brei004/SustiDesarrollo/assets/153737279/d39230fd-3b1a-4160-b94b-735d46013d4b)
+
+Para encontrar las definiciones nos vamos al feature que nos muestra los escenarios 
+Algunos pasos se cumplen al crear la columna de director, sin embargo, muchos más no lo hacen
+![imagen](https://github.com/brei004/SustiDesarrollo/assets/153737279/127adf9f-50cc-443d-8df9-724155f7e7fd)
+
+Además si necesitamos que se comprende humano computador, configuramos /support/paths.rb así 
+![imagen](https://github.com/brei004/SustiDesarrollo/assets/153737279/0ebdb867-d65c-4eb3-8c28-70ee166d38be)
+
+Finamelmente tenemos que modificar 
+def movie_params
+    params.require(:movie).permit(:title, :rating, :description, :release_date, :director)
+  end
+Sino al crear o editar alguna pelicula no lo permitiría
+
 
 Parte 2: Ruby on Rails
 Pregunta 1 (1 punto)
 ¿Por qué la abstracción de un objeto de formulario pertenece a la capa de presentación y no a la capa
 de servicios (o inferior)?
-    Separación de Responsabilidades:
-    La arquitectura de software suele seguir el principio de separación de responsabilidades para mejorar la modularidad y la mantenibilidad del código. La capa de presentación se centra en la representación y manipulación de la interfaz de usuario, mientras que las capas inferiores (como la capa de servicios) se centran en la lógica de negocios y la manipulación de datos. Separar estas responsabilidades facilita el desarrollo y la comprensión del código.
-
-    Reutilización de Componentes de Interfaz de Usuario:
-    La abstracción de un objeto de formulario generalmente está estrechamente relacionada con la interfaz de usuario y su interacción con el usuario. Al mantener esta abstracción en la capa de presentación, puedes reutilizar fácilmente componentes de interfaz de usuario en diferentes partes de tu aplicación o incluso en diferentes aplicaciones sin depender de la lógica de negocios subyacente.
-
-    Adaptación a Diversas Interfaces de Usuario:
-    Diferentes plataformas y tecnologías pueden tener diferentes requisitos y convenciones para la representación de formularios. Mantener la abstracción en la capa de presentación permite adaptarse fácilmente a estas variaciones sin afectar la lógica de negocios subyacente. Por ejemplo, un formulario puede representarse de manera diferente en una aplicación web que en una aplicación móvil.
-
-    Facilita las Pruebas Unitarias:
-    La capa de presentación, al centrarse en la representación de la interfaz de usuario, facilita las pruebas unitarias. Puedes realizar pruebas de forma más efectiva sobre la presentación y la interacción del usuario sin depender de la capa de servicios o de la capa de acceso a datos.
-
-    Escalabilidad y Cambios en la Interfaz de Usuario:
-    Los cambios en la interfaz de usuario son comunes y pueden ocurrir con más frecuencia que los cambios en la lógica de negocios. Mantener la abstracción del objeto de formulario en la capa de presentación facilita la escalabilidad de la aplicación al permitir cambios en la interfaz de usuario sin afectar otras capas.
+La abstracción de un objeto de formulario pertenece a la capa de presentación porque está directamente relacionada con la interfaz de usuario y la entrada de datos. La capa de presentación maneja la interacción del usuario y la representación visual de la aplicación. 
+En contraste, la capa de servicios o capas inferiores se centran en la lógica de negocio y en la manipulación de datos, pero no están directamente involucradas en la presentación de la interfaz de usuario.
 Pregunta 2 (1 punto)
 ¿Cuál es la diferencia entre autenticación y autorización?
-
-La autenticación y la autorización son dos conceptos distintos pero interrelacionados en el contexto de la seguridad de la información. Ambos términos se utilizan comúnmente en sistemas de software, redes y otros entornos para gestionar el acceso a recursos y servicios. Aquí hay una breve explicación de cada uno:
-
-    Autenticación:
-        Definición: La autenticación se refiere al proceso de verificar la identidad de un usuario, sistema o entidad.
-        Objetivo: Garantizar que la persona o entidad que intenta acceder a un sistema o recurso es quien dice ser.
-        Métodos: Puede implicar el uso de credenciales como nombres de usuario y contraseñas, tarjetas inteligentes, biometría (huellas dactilares, reconocimiento facial, etc.) o cualquier otro método que permita verificar la identidad.
-
-    En resumen, la autenticación responde a la pregunta: "¿Eres quien dices ser?".
-
-    Autorización:
-        Definición: La autorización se refiere al proceso de conceder o negar permisos y privilegios a un usuario o sistema después de que se ha autenticado.
-        Objetivo: Determinar qué acciones o recursos específicos tiene permitido acceder o manipular un usuario autenticado.
-        Métodos: Se basa en roles, permisos y políticas que definen qué acciones o recursos están permitidos para usuarios específicos.
-
-    En resumen, la autorización responde a la pregunta: "Después de autenticarte, ¿qué estás autorizado a hacer?".
-
-Ejemplo:
-
-    Autenticación: Imagina un sistema que te pide un nombre de usuario y una contraseña para iniciar sesión. Si proporcionas las credenciales correctas, se considera que te has autenticado con éxito.
-    Autorización: Después de autenticarte, el sistema determina qué acciones puedes realizar. Por ejemplo, un usuario regular puede tener permisos para leer información, pero no para realizar cambios, mientras que un administrador puede tener permisos más amplios que incluyan la capacidad de modificar datos.
-
-Resumen:
-La autenticación se ocupa de verificar la identidad, mientras que la autorización se ocupa de determinar los privilegios y permisos asociados con esa identidad autenticada. Ambos conceptos son fundamentales para garantizar la seguridad y el control de acceso en sistemas y entornos informáticos.
-
-
+La autenticación se refiere al proceso de verificar la identidad de un usuario, asegurando que la persona o entidad que está intentando acceder a un sistema o recurso es quien dice ser. En cambio, la autorización se centra en determinar qué acciones o recursos específicos tiene permitido realizar un usuario autenticado. En resumen, la autenticación se ocupa de la identidad, mientras que la autorización se ocupa de los permisos y los accesos
 
 Pregunta 3
 Se aprecian los diferentes middlewares
@@ -95,26 +96,62 @@ La gema attractor nos permite tener una interfaz interactiva para visualizar los
 ![imagen](https://github.com/brei004/SustiDesarrollo/assets/153737279/b020e192-e842-4cc0-a50b-9b4a55b286b8)
 
 
-Parte 1
-
-Previamente ejecutando todos los comandos para inizializar el proyecto se verifica cucumber es así que nuestro proyecto queda así
-
-![imagen](https://github.com/brei004/SustiDesarrollo/assets/153737279/ddd97dc4-e0bf-4af3-997b-fdfbec3a7162)
-
-Con los escenarios fallidos
-
-![imagen](https://github.com/brei004/SustiDesarrollo/assets/153737279/491150b3-6675-413d-bbfa-1864efe93bf3)
-
-Cobertura de codigo 
-El index.html nos muestra un informde nuestras pruebas en general
-![imagen](https://github.com/brei004/SustiDesarrollo/assets/153737279/3b5697d2-3964-4860-a5fa-cc4229fc9663)
-
-
-
 Parte 3
 
+**Pregunta 1**
+El codigo permite modificar y borrar una cookie, que al inicio tiene valor nil
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Cookies</title>
+</head>
+
+<body>
+
+    <script>
+        function getCookie(name) {
+            const cookies = document.cookie.split(';');
+            for (const cookie of cookies) {
+                const [cookieName, cookieValue] = cookie.trim().split('=');
+                if (cookieName === name) {
+                    return decodeURIComponent(cookieValue);
+                }
+            }
+            return null;
+        }
+
+        function setCookie(name, value, days) {
+            const expirationDate = new Date();
+            expirationDate.setTime(expirationDate.getTime() + (days * 24 * 60 * 60 * 1000));
+            const expires = `expires=${expirationDate.toUTCString()}`;
+            document.cookie = `${name}=${encodeURIComponent(value)}; ${expires}; path=/`;
+        }
+
+        function deleteCookie(name) {
+            document.cookie = `${name}=; expires=Thu, 01 Jan 2022 00:00:00 UTC; path=/;`;
+        }
+
+        console.log("Valor inicial de document.cookie:", document.cookie);
+
+        setCookie('galleta', 'Registro 1', 1);
+        console.log("Valor de la cookie: ", getCookie('galleta'));
+
+        deleteCookie('galleta');
+        console.log("Luego de eliminar galleta:", document.cookie);
+    </script>
+
+</body>
+
+</html>
+![imagen](https://github.com/brei004/SustiDesarrollo/assets/153737279/afd40339-3ce7-4996-b623-bf122ee123f0)
+
+
 **Pregunta 2**
-el archivo html quedería así 
+el archivo html quedería así
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -214,240 +251,46 @@ Error cuando falta @
 
 
 **Pregunta 3**
+con las validaciones tenemos 
+![imagen](https://github.com/brei004/SustiDesarrollo/assets/153737279/910a8d2a-e3a8-4ba1-8970-115e808cb2b2)
 
-* Pregunta 4 *
-Pregunta: ¿Dónde podemos conseguir una instancia de Movie real para utilizarla en dicha prueba?
-- Podemos acceder a instancias reales de Movie mediante un archivo yml, el cual nos servirá en el entorno de pruebas y se le pueden crear muchas instancias de objetos Movie, así simular un entorno real. Este se debe de ubicar en la carpeta spec/fixtures
-Pregunta: ¿Qué hacen los siguientes códigos entregados y donde se ubican? . ¿Por qué hay que tener
-cuidado en su uso?
-- Los códigos entregados son un archivo yml y un archivo de pruebas de ruby, se ubican dentro de la carpeta spec en nuestro proyecto. Por el lado de movies.yml se inicializa una película milk_movie con 4 parametros y documentary_movie con 3 parametros, mientras que el archivo movie_spec nos proporcia el test de nuestro modelo, describiendo como debería comportarse al solicitarle el metodo name_with_rating a el modelo movie, el cual utilizando milk_movie nos debería retorna su respectivo rating para pasar la prueba.
-- Hay que tener cuidado al usar los fixtures ya que son una representación a mano de una instancia de Movie y puede que no cumpla con ciertas restricciones que deseamos aplicar a nuestras instancias
-Pros
-- Creación de una instancias real de un objeto
-- Realizar un analisis del comportamiento con objetos reales
-Contras
-- Falta de generalidad
+![imagen](https://github.com/brei004/SustiDesarrollo/assets/153737279/e8a38680-ab4d-4bf0-bee8-294ef811507d)
+
+![imagen](https://github.com/brei004/SustiDesarrollo/assets/153737279/bd0ded1d-cd7f-45f1-983f-def47b015de5)
+
+Así conseguimos que se eviten llenar campos vacios y con caracteres no permitidos usando las validaciones del modelo
+
+**Pregunta 4**
+Pregunta: ¿Dónde podemos obtener una instancia real de la clase Movie para utilizar en dicha prueba?
+
+    Podemos obtener una instancia real de la clase Movie mediante el uso de factories o fixtures. Las factories pueden generar instancias dinámicamente, mientras que las fixtures proporcionan instancias predefinidas. En el contexto de las pruebas, las fixtures son comúnmente almacenadas en archivos YAML y se encuentran en la carpeta spec/fixtures.
+
+Pregunta: ¿Qué hacen los siguientes códigos entregados y dónde se ubican? ¿Por qué hay que tener cuidado en su uso?
+
+    Los códigos entregados consisten en un archivo YAML (movies.yml) y un archivo de pruebas en Ruby (movie_spec.rb). Estos archivos se ubican en la carpeta spec del proyecto. En el archivo YAML se definen instancias de Movie que se utilizan como fixtures en las pruebas. Al usar fixtures, debemos tener cuidado porque estas instancias pueden no cumplir con todas las restricciones o validaciones de nuestro modelo. Además, su mantenimiento manual puede llevar a fixtures desactualizadas o inconsistentes.
+
+Pros y contras del uso de factories o fixtures en las pruebas:
+
+Pros:
+
+    Factories:
+        Dinámicas y flexibles, permiten la creación de instancias con datos específicos para cada prueba.
+        Facilitan la generación de datos válidos y coherentes.
+    Fixtures:
+        Proporcionan instancias predefinidas, lo que puede ser útil para ciertos escenarios de prueba.
+
+Contras:
+
+    Factories:
+        Pueden requerir más código y configuración.
+    Fixtures:
+        Mantenimiento manual, pueden desactualizarse fácilmente.
+        Menos flexibles para datos específicos en pruebas particulares.
   
 Parte 4
     Crear la clase TennisScorer y ejecutar la primera especificación:
 
-ruby
 
-# tennis_scorer.rb
-
-class TennisScorer
-  def initialize
-    @score_sacador = 0
-    @score_receptor = 0
-  end
-
-  def puntuacion
-    "#{score_to_text(@score_sacador)}-#{score_to_text(@score_receptor)}"
-  end
-
-  def marcar_punto_sacador
-    @score_sacador += 1
-  end
-
-  def marcar_punto_receptor
-    @score_receptor += 1
-  end
-
-  private
-
-  def score_to_text(score)
-    case score
-    when 0
-      "0"
-    when 1
-      "15"
-    when 2
-      "30"
-    when 3
-      "40"
-    else
-      raise "Puntuación no válida"
-    end
-  end
-end
-
-    Ejecutar la especificación:
-
-bash
-
-rspec
-
-Esto debería mostrar un fallo en todas las expectativas porque aún no hemos implementado la lógica.
-
-    Desarrollar las expectativas restantes:
-
-ruby
-
-# tennis_spec.rb
-
-RSpec.describe "TennisScorer" do
-  describe "puntuación básica" do
-    before(:each) do
-      @scorer = TennisScorer.new
-    end
-
-    it "empieza con un marcador de 0-0" do
-      expect(@scorer.puntuacion).to eq("0-0")
-    end
-
-    it "hace que el marcador sea 15-0 si el sacador gana un punto" do
-      @scorer.marcar_punto_sacador
-      expect(@scorer.puntuacion).to eq("15-0")
-    end
-
-    it "hace que el marcador sea 0-15 si el receptor gana un punto" do
-      @scorer.marcar_punto_receptor
-      expect(@scorer.puntuacion).to eq("0-15")
-    end
-
-    it "hace que el marcador sea 15-15 después de que ambos ganen un punto" do
-      @scorer.marcar_punto_sacador
-      @scorer.marcar_punto_receptor
-      expect(@scorer.puntuacion).to eq("15-15")
-    end
-  end
-end
-
-    Ejecutar las expectativas restantes:
-
-bash
-
-rspec
-
-Esto mostrará fallas para las expectativas restantes.
-
-    Corregir duplicación en la especificación y desarrollar las dos últimas expectativas:
-
-ruby
-
-# tennis_spec.rb
-
-RSpec.describe "TennisScorer" do
-  describe "puntuación básica" do
-    before(:each) do
-      @scorer = TennisScorer.new
-    end
-
-    it "empieza con un marcador de 0-0" do
-      expect(@scorer.puntuacion).to eq("0-0")
-    end
-
-    it "hace que el marcador sea 15-0 si el sacador gana un punto" do
-      @scorer.marcar_punto_sacador
-      expect(@scorer.puntuacion).to eq("15-0")
-    end
-
-    it "hace que el marcador sea 0-15 si el receptor gana un punto" do
-      @scorer.marcar_punto_receptor
-      expect(@scorer.puntuacion).to eq("0-15")
-    end
-
-    it "hace que el marcador sea 15-15 después de que ambos ganen un punto" do
-      @scorer.marcar_punto_sacador
-      @scorer.marcar_punto_receptor
-      expect(@scorer.puntuacion).to eq("15-15")
-    end
-
-    it "40-0 después de que el sacador gane tres puntos" do
-      3.times { @scorer.marcar_punto_sacador }
-      expect(@scorer.puntuacion).to eq("40-0")
-    end
-
-    it "W-L después de que el sacador gana cuatro puntos" do
-      4.times { @scorer.marcar_punto_sacador }
-      expect(@scorer.puntuacion).to eq("W-L")
-    end
-
-    it "L-W después de que el receptor gane cuatro puntos" do
-      4.times { @scorer.marcar_punto_receptor }
-      expect(@scorer.puntuacion).to eq("L-W")
-    end
-
-    it "Deuce después de cada uno gana tres puntos" do
-      3.times do
-        @scorer.marcar_punto_sacador
-        @scorer.marcar_punto_receptor
-      end
-      expect(@scorer.puntuacion).to eq("Deuce")
-    end
-
-    it "El sacador con ventaja después de cada uno gana tres puntos y el sacador obtiene uno más" do
-      3.times do
-        @scorer.marcar_punto_sacador
-        @scorer.marcar_punto_receptor
-      end
-      @scorer.marcar_punto_sacador
-      expect(@scorer.puntuacion).to eq("Advantage-Sacador")
-    end
-  end
-end
-
-Si deseas utilizar Ruby on Rails para crear un proyecto que incluya la estructura básica junto con RSpec para las pruebas, puedes seguir estos pasos:
-
-    Crear un nuevo proyecto de Rails:
-
-bash
-
-rails new tennis_project
-
-Esto creará un nuevo directorio llamado tennis_project con la estructura básica de un proyecto de Ruby on Rails.
-
-    Navegar al directorio del proyecto:
-
-bash
-
-cd tennis_project
-
-    Agregar la gema RSpec al archivo Gemfile:
-
-Abre el archivo Gemfile en un editor de texto y agrega la siguiente línea:
-
-ruby
-
-group :development, :test do
-  gem 'rspec-rails'
-end
-
-Luego, ejecuta:
-
-bash
-
-bundle install
-
-    Configurar RSpec en el proyecto:
-
-bash
-
-rails generate rspec:install
-
-Esto generará la configuración necesaria para RSpec en tu proyecto.
-
-    Crear la clase TennisScorer y las especificaciones:
-
-Puedes crear la clase TennisScorer en el directorio app/lib y las especificaciones en el directorio spec.
-
-bash
-
-mkdir -p app/lib
-touch app/lib/tennis_scorer.rb
-
-mkdir spec
-touch spec/tennis_spec.rb
-
-    Ejecutar las pruebas:
-
-Ahora, puedes ejecutar las pruebas utilizando RSpec:
-
-bash
-
-rspec
-
-Esto ejecutará las pruebas ubicadas en el directorio spec.
 
 
 
